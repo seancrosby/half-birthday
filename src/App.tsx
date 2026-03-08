@@ -16,7 +16,7 @@ function App() {
     const accurate = getAccurateHalfBirthday(birthday)
 
     setResults({
-      traditional: traditional === 'none' ? 'None (Leap Year Issue)' : traditional.toLocaleString(),
+      traditional: traditional === 'none' ? 'None (Leap Year Issue)' : traditional.toLocaleDateString(),
       accurate: accurate.toLocaleString(),
     })
     setShowResults(true)
