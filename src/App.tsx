@@ -11,12 +11,15 @@ function App() {
   const handleCompute = () => {
     if (!date) return
 
-    const birthday = new Date(`${date}T${time}`)
+    const [y, m, d] = date.split('-').map(Number)
+    const [h, min] = time.split(':').map(Number)
+    const birthday = new Date(Date.UTC(y, m - 1, d, h, min))
+    
     const traditional = getTraditionalHalfBirthday(birthday)
     const accurate = getAccurateHalfBirthday(birthday)
 
     setResults({
-      traditional: traditional === 'none' ? 'None (Leap Year Issue)' : traditional.toLocaleDateString(),
+      traditional: traditional === 'none' ? 'None (Leap Year Issue)' : traditional.toLocaleDateString(undefined, { timeZone: 'UTC' }),
       accurate: accurate.toLocaleString(),
     })
     setShowResults(true)
