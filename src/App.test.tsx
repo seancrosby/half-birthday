@@ -62,10 +62,13 @@ describe('App', () => {
     const computeBtn = screen.getByRole('button', { name: /Compute Half Birthday/i })
     fireEvent.click(computeBtn)
 
-    // Traditional should be "None (Leap year or insufficient days in month)"
+    // Traditional should be "None" with detail "Leap year or insufficient days in month"
     const traditionalHeading = screen.getByText('Traditional')
     const tradResult = traditionalHeading.parentElement?.querySelector('.result-value')
-    expect(tradResult?.textContent).toBe('None (Leap year or insufficient days in month)')
+    expect(tradResult?.textContent).toBe('None')
+    
+    const tradDetail = traditionalHeading.parentElement?.querySelector('.result-detail')
+    expect(tradDetail?.textContent).toBe('Leap year or insufficient days in month')
 
     // Accurate should have a date
     const accurateHeading = screen.getByText('Accurate')
@@ -83,6 +86,9 @@ describe('App', () => {
 
     const traditionalHeading = screen.getByText('Traditional')
     const tradResult = traditionalHeading.parentElement?.querySelector('.result-value')
-    expect(tradResult?.textContent).toBe('None (Leap year or insufficient days in month)')
+    expect(tradResult?.textContent).toBe('None')
+
+    const tradDetail = traditionalHeading.parentElement?.querySelector('.result-detail')
+    expect(tradDetail?.textContent).toBe('Leap year or insufficient days in month')
   })
 })

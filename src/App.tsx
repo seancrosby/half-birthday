@@ -5,7 +5,7 @@ import './App.css'
 function App() {
   const [date, setDate] = useState('')
   const [time, setTime] = useState('00:00')
-  const [results, setResults] = useState<{ traditional: string | null; accurate: string | null } | null>(null)
+  const [results, setResults] = useState<{ traditional: string | null; traditionalDetail: string | null; accurate: string | null } | null>(null)
   const [showResults, setShowResults] = useState(false)
 
   const handleCompute = () => {
@@ -19,7 +19,8 @@ function App() {
     const accurate = getAccurateHalfBirthday(birthday)
 
     setResults({
-      traditional: traditional === 'none' ? 'None (Leap year or insufficient days in month)' : traditional.toLocaleDateString(undefined, { timeZone: 'UTC' }),
+      traditional: traditional === 'none' ? 'None' : traditional.toLocaleDateString(undefined, { timeZone: 'UTC' }),
+      traditionalDetail: traditional === 'none' ? 'Leap year or insufficient days in month' : null,
       accurate: accurate.toLocaleString(),
     })
     setShowResults(true)
@@ -61,6 +62,9 @@ function App() {
           <div className="result-card">
             <h3>Traditional</h3>
             <p className="result-value">{results?.traditional}</p>
+            {results?.traditionalDetail && (
+              <p className="result-detail">{results.traditionalDetail}</p>
+            )}
             <span className="tooltip">Six months after the birthday.</span>
           </div>
           <div className="result-card">

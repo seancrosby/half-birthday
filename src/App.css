@@ -139,6 +139,12 @@ body {
   font-weight: 600;
 }
 
+.result-detail {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin: 0.2rem 0 0 0;
+}
+
 .tooltip {
   display: block;
   font-size: 0.8rem;
