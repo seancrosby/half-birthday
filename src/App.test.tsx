@@ -52,4 +52,37 @@ describe('App', () => {
     const isSeptember = text.includes('9') || text.toLowerCase().includes('sep')
     expect(isSeptember).toBe(true)
   })
+
+  it('handles February 29th birthdays correctly', () => {
+    render(<App />)
+    const dateInput = screen.getByLabelText(/Birthday preceding half-birthday/i)
+    // Feb 29, 2024 was a leap year
+    fireEvent.change(dateInput, { target: { value: '2024-02-29' } })
+
+    const computeBtn = screen.getByRole('button', { name: /Compute Half Birthday/i })
+    fireEvent.click(computeBtn)
+
+    // Traditional should be "None (Leap year or insufficient days in month)"
+    const traditionalHeading = screen.getByText('Traditional')
+    const tradResult = traditionalHeading.parentElement?.querySelector('.result-value')
+    expect(tradResult?.textContent).toBe('None (Leap year or insufficient days in month)')
+
+    // Accurate should have a date
+    const accurateHeading = screen.getByText('Accurate')
+    const accResult = accurateHeading.parentElement?.querySelector('.result-value')
+    expect(accResult?.textContent).not.toBe('')
+  })
+
+  it('handles October 31st birthdays correctly', () => {
+    render(<App />)
+    const dateInput = screen.getByLabelText(/Birthday preceding half-birthday/i)
+    fireEvent.change(dateInput, { target: { value: '2025-10-31' } })
+
+    const computeBtn = screen.getByRole('button', { name: /Compute Half Birthday/i })
+    fireEvent.click(computeBtn)
+
+    const traditionalHeading = screen.getByText('Traditional')
+    const tradResult = traditionalHeading.parentElement?.querySelector('.result-value')
+    expect(tradResult?.textContent).toBe('None (Leap year or insufficient days in month)')
+  })
 })

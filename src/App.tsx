@@ -19,7 +19,7 @@ function App() {
     const accurate = getAccurateHalfBirthday(birthday)
 
     setResults({
-      traditional: traditional === 'none' ? 'None (Leap Year Issue)' : traditional.toLocaleDateString(undefined, { timeZone: 'UTC' }),
+      traditional: traditional === 'none' ? 'None (Leap year or insufficient days in month)' : traditional.toLocaleDateString(undefined, { timeZone: 'UTC' }),
       accurate: accurate.toLocaleString(),
     })
     setShowResults(true)
