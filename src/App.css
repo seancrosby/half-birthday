@@ -27,6 +27,20 @@ body {
   background: var(--card-bg);
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.github-link {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #fff;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.github-link:hover {
+  opacity: 1;
 }
 
 .logo {
