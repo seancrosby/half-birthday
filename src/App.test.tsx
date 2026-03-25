@@ -42,13 +42,12 @@ describe('App', () => {
     const computeBtn = screen.getByRole('button', { name: /Compute Half Birthday/i })
     fireEvent.click(computeBtn)
 
-    const traditionalHeading = screen.getByText('Traditional')
-    const resultValue = traditionalHeading.parentElement?.querySelector('.result-value')
+    const resultValue = screen.getByTestId('traditional-value')
     
-    expect(resultValue?.textContent).toContain('15')
-    expect(resultValue?.textContent).toContain('2026')
+    expect(resultValue.textContent).toContain('15')
+    expect(resultValue.textContent).toContain('2026')
     
-    const text = resultValue?.textContent || ''
+    const text = resultValue.textContent || ''
     const isSeptember = text.includes('9') || text.toLowerCase().includes('sep')
     expect(isSeptember).toBe(true)
   })
@@ -63,17 +62,15 @@ describe('App', () => {
     fireEvent.click(computeBtn)
 
     // Traditional should be "None" with detail "Leap year or insufficient days in month"
-    const traditionalHeading = screen.getByText('Traditional')
-    const tradResult = traditionalHeading.parentElement?.querySelector('.result-value')
-    expect(tradResult?.textContent).toBe('None')
+    const tradResult = screen.getByTestId('traditional-value')
+    expect(tradResult.textContent).toBe('None')
     
-    const tradDetail = traditionalHeading.parentElement?.querySelector('.result-detail')
-    expect(tradDetail?.textContent).toBe('Leap year or insufficient days in month')
+    const tradDetail = screen.getByTestId('traditional-detail')
+    expect(tradDetail.textContent).toBe('Leap year or insufficient days in month')
 
     // Accurate should have a date
-    const accurateHeading = screen.getByText('Accurate')
-    const accResult = accurateHeading.parentElement?.querySelector('.result-value')
-    expect(accResult?.textContent).not.toBe('')
+    const accResult = screen.getByTestId('accurate-value')
+    expect(accResult.textContent).not.toBe('')
   })
 
   it('handles October 31st birthdays correctly', () => {
@@ -84,11 +81,10 @@ describe('App', () => {
     const computeBtn = screen.getByRole('button', { name: /Compute Half Birthday/i })
     fireEvent.click(computeBtn)
 
-    const traditionalHeading = screen.getByText('Traditional')
-    const tradResult = traditionalHeading.parentElement?.querySelector('.result-value')
-    expect(tradResult?.textContent).toBe('None')
+    const tradResult = screen.getByTestId('traditional-value')
+    expect(tradResult.textContent).toBe('None')
 
-    const tradDetail = traditionalHeading.parentElement?.querySelector('.result-detail')
-    expect(tradDetail?.textContent).toBe('Leap year or insufficient days in month')
+    const tradDetail = screen.getByTestId('traditional-detail')
+    expect(tradDetail.textContent).toBe('Leap year or insufficient days in month')
   })
 })

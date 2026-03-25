@@ -1,0 +1,20 @@
+.computeBtn {
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary, #646cff);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.computeBtn:hover:not(:disabled) {
+  background: var(--primary-hover, #535bf2);
+}
+
+.computeBtn:disabled {
+  background: #444;
+  cursor: not-allowed;
+}

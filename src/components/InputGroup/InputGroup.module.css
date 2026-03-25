@@ -1,0 +1,20 @@
+.inputGroup {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #bbb;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #444;
+  background: var(--input-bg, #2a2a2a);
+  color: var(--text, #ffffff);
+  border-radius: 6px;
+  font-size: 1rem;
+}
