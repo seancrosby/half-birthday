@@ -1,32 +1,18 @@
 {
-  "name": "crosby-ui",
+  "name": "half-birthday-calculator",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "main": "dist/crosby-ui.umd.js",
-  "module": "dist/crosby-ui.es.js",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/crosby-ui.es.js",
-      "require": "./dist/crosby-ui.umd.js"
-    },
-    "./style.css": "./dist/crosby-ui.css"
-  },
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:lib": "vite build --config vite.config.lib.ts",
     "lint": "eslint .",
     "test": "vitest run",
     "preview": "vite preview"
   },
   "dependencies": {
     "@seancrosby/half-birthday-calc": "^1.0.1",
+    "crosby-ui": "github:seancrosby/crosby-ui#0.0.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

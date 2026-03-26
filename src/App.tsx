@@ -8,7 +8,8 @@ import {
   ResultCard,
   ResultsList,
   Footer
-} from './components'
+} from 'crosby-ui'
+import 'crosby-ui/style.css'
 import './App.css'
 
 function App() {
