@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type ChangeEvent } from 'react'
 import { getTraditionalHalfBirthday, getAccurateHalfBirthday } from '@seancrosby/half-birthday-calc'
 import {
   Container,
@@ -64,7 +64,7 @@ function App() {
           id="birthday"
           type="date"
           value={date}
-          onChange={(e) => setDate(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setDate(e.target.value)}
         />
 
         <InputGroup
@@ -72,7 +72,7 @@ function App() {
           id="time"
           type="time"
           value={time}
-          onChange={(e) => setTime(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setTime(e.target.value)}
         />
 
         <ComputeButton onClick={handleCompute} disabled={!date}>
